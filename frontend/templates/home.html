@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+    <SCRIPT src="https://code.jquery.com/jquery-3.2.1.min.js"></SCRIPT>
+    <title>CMS</title>
+</head>
+<body>
+    <a href="{{ url_for('logout') }}" class="logout">Logout</a>
+    <h1>- CMS -</h1>
+    <div class="author">
+        <h2 style="background-color: white;">Author</h2>
+        <table>
+            <tbody>
+                <tr>
+                    <td><b>Name:</b></td>
+                    <td><small>{{ author.firstName }} {{ author.lastName }}</small></td>
+                </tr>
+                <tr>
+                    <td><b>Email:</b></td>
+                    <td><small class="email">{{ author.email }}</small></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="del-account">
+        <h2>Delete account</h2>
+        <button id="login-btn">delete</button>
+        <div class="confirm">
+            <button class="btn-no">No</button>
+            <a href="{{ url_for('delete_author') }}" class="btn-yes">YES</a>
+        </div>
+    </div>
+
+    <!-- All author's article -->
+    <div class="all-articles">
+        <h2>All Articles - <span class="amount">{{ articles|length }}</span></h2>
+        <div>
+            {% for article in articles %}
+                {% set date_time = article.dateCreated.split('T') %}
+                <h3><a href="{{ url_for('delete_article', id=article.id) }}">❌ &nbsp;&nbsp;</a>- <a href="{{ url_for('article', id=article.id) }}" target="_blank">{{ article.title }} 📑 - <small>created on: <mark>{{ date_time[0] }}</mark></small></a></h3>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Create new articles -->
+    <div class="create-article">
+        <h2>Create new article 📝</h2>
+        <form method="POST" action="/home">
+            {{ form.hidden_tag() }}
+            {{ form.title.label }} {{ form.title }}
+            {{ form.content.label }} {{ form.content(rows=10, cols=50) }}
+            <input type="submit" value="Create">
+        </form>
+    </div>
+
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{% extends "index.html" %}
+{% block register %}
+    <div class="form">
+        <h2>Author Register</h2>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <form method="POST" action="/register" class="register">
+            {{ form.hidden_tag() }}
+            {{ form.first_name.label }} {{ form.first_name(size=20) }}
+            {{ form.last_name.label }} {{ form.last_name(size=20) }}
+            {{ form.email.label }} {{ form.email(size=20) }}
+            <input type="submit" value="Register">
+        </form>
+        <a href="{{ url_for('login') }}"><small>Login to existing account!</small></a>
+    </div>
+{% endblock register %}

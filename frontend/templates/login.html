@@ -1,0 +1,39 @@
+{% extends "index.html" %}
+{% block login %}
+    <div class="form">
+        <h2>Author Login</h2>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <form method="POST" action="/">
+            {{ form.hidden_tag() }}
+            {{ form.email.label }} {{ form.email(size=20) }}
+            <input type="submit" value="Login">
+        </form>
+        <a href="{{ url_for('register') }}"><small>Create account!</small></a>
+        <div>
+            <h3>All Registered Authors - <span class="amount">{{ authors_amount }}</span></h3>
+            {% for author in authors %}
+                <div class="author">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td><b>Name:</b></td>
+                                <td><small>{{ author.firstName }} {{ author.lastName }}</small></td>
+                            </tr>
+                            <tr>
+                                <td><b>Email:</b></td>
+                                <td><small class="email">{{ author.email }}</small></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+{% endblock login %}

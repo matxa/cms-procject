@@ -1,0 +1,23 @@
+{% extends "index.html" %}
+{% block register %}
+<div style="
+    text-align: left;
+    margin-top: 20%;
+">
+    {% if article %}
+        <h2>{{ article.title }}</h2>
+        {% set date_time = article.dateCreated.split('T') %}
+        <p style="
+            max-width: 400px;
+            border-bottom: 2px solid black;
+            padding-bottom: 20px;
+        ">
+            {{ article.content }}
+        </p>
+        <p><b>By:</b> <mark style="background-color: orangered;">{{ article.ownerEmail }}</mark> - <b>created on:</b> <small><mark>{{ date_time[0] }}</mark></small></p>
+    {% else %}
+        <p style="background-color: red; color: orange; font-size: 30px; padding: 10px;">Article not accessible</p>
+    {% endif %}
+
+</div>
+{% endblock register %}
