@@ -15,8 +15,8 @@
 * GET - [`/authors`](#get-all-authors)
 * GET - [`/articles/author/{email}`](#get-all-of-authors-articles)
 * POST - [`/articles/article`](#create-article)
-* GET - [`/articles/author/get/{id}`](#get-article)
-* DELETE - [`/articles/author/delete/{id}`](#delete-article)
+* GET - [`/articles/article/get/{id}`](#get-article)
+* DELETE - [`/articles/article/delete/{id}`](#delete-article)
 
 ### Create Author
 ```json
@@ -187,7 +187,7 @@
 ### Get Article
 ```json
 {
-  "url": "/articles/author/get/{id}",
+  "url": "/articles/article/get/{id}",
   "method": "GET",
   "description": "Get article by using id",
   "pathVariable": "id",
@@ -213,7 +213,7 @@
 ### Delete Article
 ```json
 {
-  "url": "/articles/author/delete/{id}",
+  "url": "/articles/article/delete/{id}",
   "method": "DELETE",
   "description": "Delete article by using id",
   "pathVariable": "id",
