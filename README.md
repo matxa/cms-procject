@@ -151,7 +151,7 @@
 ### Create Article
 ```json
 {
-  "url": "/articles/author",
+  "url": "/articles/article",
   "method": "POST",
   "description": "Create a new article",
   "requestBody": {
