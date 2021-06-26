@@ -14,7 +14,7 @@
 * DELETE - [`/authors/delete/{email}`](#delete-author)
 * GET - [`/authors`](#get-all-authors)
 * GET - [`/articles/author/{email}`](#get-all-of-authors-articles)
-* POST - [`/articles/author`](#create-article)
+* POST - [`/articles/article`](#create-article)
 * GET - [`/articles/author/get/{id}`](#get-article)
 * DELETE - [`/articles/author/delete/{id}`](#delete-article)
 
@@ -151,7 +151,7 @@
 ### Create Article
 ```json
 {
-  "url": "/articles/author",
+  "url": "/articles/article",
   "method": "POST",
   "description": "Create a new article",
   "requestBody": {
