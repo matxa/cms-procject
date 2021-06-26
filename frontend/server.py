@@ -4,8 +4,6 @@ import re
 from flask import Flask, request, jsonify
 from flask import render_template, redirect, url_for
 from flask.helpers import flash
-from werkzeug.datastructures import auth_property
-from werkzeug.local import F
 from forms import LoginForm, RegisterForm, ArticleForm
 import requests
 from flask_login import (
